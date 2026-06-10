@@ -29,6 +29,11 @@
   --transition-fast: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
   --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-slow: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Alternative theme accents inspired by reference */
+  --accent-magenta: #ff6b9f;
+  --accent-cyan: #3dd4f5;
+  --hero-gradient-1: linear-gradient(135deg, rgba(61,212,245,0.12) 0%, rgba(255,107,159,0.08) 50%, rgba(255,193,7,0.03) 100%);
 }
 
 /* ==========================================================================
@@ -232,6 +237,28 @@ h1, h2, h3, h4, h5, h6 {
   gap: 0.6rem;
 }
 
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.logo-text .brand-main {
+  font-family: var(--font-headings);
+  font-weight: 800;
+  color: var(--primary-sky);
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.logo-text .brand-sub {
+  font-family: var(--font-headings);
+  font-weight: 700;
+  color: var(--text-dark);
+  font-size: 0.9rem;
+  margin-top: -2px;
+}
+
 .logo-img {
   height: 72px;
   width: auto;
@@ -384,8 +411,8 @@ h1, h2, h3, h4, h5, h6 {
    ========================================================================== */
 .hero {
   position: relative;
-  padding: 11rem 0 9rem 0;
-  background-color: var(--bg-white);
+  padding: 10rem 0 8rem 0;
+  background: var(--hero-gradient-1);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -441,10 +468,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-title {
-  font-size: 3.5rem;
-  font-weight: 800;
-  line-height: 1.15;
-  margin-bottom: 1.5rem;
+  font-size: 3.75rem;
+  font-weight: 900;
+  line-height: 1.05;
+  margin-bottom: 1.2rem;
   letter-spacing: -0.03em;
 }
 
@@ -465,16 +492,55 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-subtitle {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   color: var(--text-muted);
-  margin-bottom: 2.5rem;
-  max-width: 550px;
+  margin-bottom: 2rem;
+  max-width: 620px;
 }
 
 .hero-actions {
   display: flex;
   gap: 1.2rem;
   width: 100%;
+}
+
+/* Primary CTA: gradient + stronger shadow to match reference banner */
+.btn-primary {
+  background-image: linear-gradient(90deg,var(--accent-yellow), var(--accent-magenta));
+  color: var(--text-dark);
+  box-shadow: 0 18px 40px rgba(255,107,159,0.12);
+  border: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.01);
+}
+
+/* Secondary CTA: outlined with accent cyan */
+.btn-secondary {
+  background: transparent;
+  color: var(--accent-cyan);
+  border-color: rgba(61,212,245,0.35);
+}
+
+.btn-secondary:hover {
+  background: rgba(61,212,245,0.06);
+}
+
+/* Hero image card to match rounded white panel in reference */
+.hero-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  background: var(--bg-white);
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: 0 30px 80px rgba(14,165,233,0.06);
+}
+
+@media (max-width: 900px) {
+  .hero-title { font-size: 2.6rem; }
+  .logo-img { height: 56px; }
 }
 
 /* Hero Image & Floating badges styling */
@@ -754,6 +820,27 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 600px) {
   .categories-grid { grid-template-columns: 1fr; }
   .logo-img { height: 52px; }
+}
+
+/* Mobile adjustments: hide header image logo but keep footer logo visible */
+@media (max-width: 820px) {
+  .header .logo-img {
+    display: none;
+  }
+  .logo-footer .logo-img {
+    display: block;
+  }
+  .logo-text {
+    display: flex;
+    margin-left: 4px;
+  }
+  .logo-text .brand-main { font-size: 1.05rem; }
+  .logo-text .brand-sub { font-size: 0.95rem; }
+}
+
+/* Hide floating badges on small screens so illustration face remains visible */
+@media (max-width: 700px) {
+  .floating-badge { display: none; }
 }
 
 /* ==========================================================================
