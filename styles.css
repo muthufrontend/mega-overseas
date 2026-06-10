@@ -233,7 +233,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .logo-img {
-  height: 64px;
+  height: 72px;
   width: auto;
   object-fit: contain;
   transition: var(--transition-smooth);
@@ -348,7 +348,22 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Reduce logo size when header becomes sticky */
 .header.sticky .logo-img {
-  height: 44px;
+  height: 48px;
+}
+
+/* Improve logo visibility: white rounded background, subtle border & shadow */
+.logo-img {
+  background-color: var(--bg-white);
+  padding: 8px;
+  border-radius: 10px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+  border: 1px solid rgba(14,165,233,0.04);
+}
+
+.logo-footer .logo-img {
+  height: 56px;
+  padding: 6px;
+  border-radius: 8px;
 }
 
 /* Hamburger transition on open */
